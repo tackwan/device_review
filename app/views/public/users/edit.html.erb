@@ -1,0 +1,35 @@
+<div class="container px-5">
+  <div class="row">
+    <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0">
+
+      <% if @user.errors.any? %>
+        <h3>
+          <%= @user.errors.count %>件のエラーが発生しました。
+        </h3>
+        <ul>
+          <% @user.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      <% end %>
+      <h3>ユーザー情報編集</h3>
+      <%= form_with model: @user, local:true do |f| %>
+      <table class="table table-hover table-inverse table-bordered">
+          <tr>
+            <th><%= f.label :name, "氏名" %></th>
+            <td><%= f.text_field :name %></td>
+          </tr>
+          <tr>
+            <th><%= f.label :email, "メールアドレス" %></th>
+            <td><%= f.text_field :email %></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td><%= f.submit "編集内容を保存", class:"btn btn-success" %></td>
+            <td><%= link_to "退会する", check_path, class:"btn btn-danger" %></td>
+          </tr>
+      </table>
+      <% end %>
+    </div>
+  </div>
+</div>
