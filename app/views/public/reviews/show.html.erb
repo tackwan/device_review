@@ -1,0 +1,35 @@
+<%= render 'layouts/header'%>
+<div class="container px-5">
+  <h2>商品詳細</h2>
+  <%= flash[:notice] %>
+  <div class="row">
+      <div class="col-5 mt-5">
+        <%= image_tag @review.image, class: "img-fluid" %>
+      </div>
+      <div class="col-7 mt-5">
+        <table class="table table-hover table-inverse table-borderless">
+        <tr>
+          <th>デバイス名</th>
+          <td><%= @review.name %></td>
+        </tr>
+        <tr>
+          <th>カテゴリー</th>
+          <td><%= @review.category.name %></td>
+        </tr>
+        <tr >
+          <th >メーカー</th>
+          <td ><%= @review.maker %></td>
+        </tr>
+        <tr>
+          <th>レビュー詳細</th>
+          <td><%= @item.detail %></td>
+        </tr>
+        </table>
+        <div>
+          <% if review.user == current_user %>
+          <%= link_to "編集する", edit_review_path(@item), class: "btn btn-success" %>
+          <% end %>
+        </div>
+      </div>
+  </div>
+</div>

@@ -1,0 +1,36 @@
+<%= render "layouts/header" %>
+<div class="container px-5">
+  <div class="row mx-auto mt-5">
+    <div class="col-11">
+      <h2>商品一覧</h2>
+      <table class="table table-hover table-inverse table-borderless">
+        <thead>
+          <tr>
+            <th>デバイス名</th>
+            <th>メーカー</th>
+            <th>カテゴリー</th>
+            <th>レビュー</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @views.each do |view| %>
+          <tr>
+            <td>
+              <%= link_to view_path(view.id) do %>
+                <%= item.name %>
+              <% end %>
+            </td>
+            <td><%= review.maker %></td>
+            <td><%= item.category %></td>
+            <td>
+              
+            </td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+    <%= paginate @views %>
+  </div>
+</div>
