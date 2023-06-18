@@ -6,6 +6,7 @@
       <table class="table table-hover table-inverse table-borderless">
         <thead>
           <tr>
+            <th>ユーザー</th>
             <th>デバイス名</th>
             <th>メーカー</th>
             <th>カテゴリー</th>
@@ -14,15 +15,16 @@
           </tr>
         </thead>
         <tbody>
-          <% @views.each do |view| %>
+          <% @reviews.each do |review| %>
           <tr>
+            <td><%= review.user.nsme </td>
             <td>
-              <%= link_to view_path(view.id) do %>
-                <%= item.name %>
+              <%= link_to review_path(view.id) do %>
+                <%= review.name %>
               <% end %>
             </td>
             <td><%= review.maker %></td>
-            <td><%= item.category %></td>
+            <td><%= review.category %></td>
             <td>
               
             </td>
@@ -31,6 +33,6 @@
         </tbody>
       </table>
     </div>
-    <%= paginate @views %>
+    <%= paginate @reviews %>
   </div>
 </div>
