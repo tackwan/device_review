@@ -1,0 +1,23 @@
+<%= render "layouts/header" %>
+<div class='container px-5'>
+  <h2>ジャンル編集</h2>
+  <div class='row mt-5'>
+    
+    <%= flash[:notice] %>
+      <!-- エラーメッセージ表示-->
+      <% if @.errors.any? %>
+        <h3><%= @category.errors.count %>件のエラーが発生しました</h3><!--エラーメッセ-->
+        <ul>
+          <% @category.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+          </ul>
+      <% end %>
+      <!-- エラーメッセージ表示-->
+      <%= form_with(model: @category, url: admin_categories_path, method: :patch) do |f| %>
+        <%= f.label :カテゴリー名 %>
+        <%= f.text_field :name %>
+        <%= f.submit "変更を保存", class: "btn btn-success" %>
+      <% end %>
+  </div>
+</div>

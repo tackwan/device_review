@@ -1,0 +1,35 @@
+<%= render "layouts/header" %>
+<div class="container px-5">
+  <div class="row mx-auto mt-5">
+      <h2>商品一覧</h2>
+    <div class="col">
+      <table class="table table-hover table-inverse table-borderless">
+        <thead>
+          <tr>
+            <th>デバイス名</th>
+            <th>メーカー</th>
+            <th>カテゴリー</th>
+            <th>レビュー</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+        <% @reviews.each do |review| %>
+          <tr>
+            <td>
+            <%= link_to admin_review_path(review.id) do %>
+              <%= review.name %>
+            <% end %>
+            </td>
+            <td><%= review.maker %></td>
+            <td><%= review.category %></td>
+            <td></td>
+            <td></td>
+          </tr>
+        <% end %>
+        </tbody>
+      </table>
+    </div>
+    <%= paginate @reviews %>
+  </div>
+</div>

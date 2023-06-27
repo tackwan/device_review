@@ -1,6 +1,6 @@
 <%= render 'layouts/header'%>
 <div class="container px-5">
-  <h2>商品詳細</h2>
+  <h2>レビュー詳細</h2>
   <%= flash[:notice] %>
   <div class="row">
       <div class="col-5 mt-5">
@@ -22,7 +22,7 @@
         </tr>
         <tr>
           <th>レビュー詳細</th>
-          <td><%= @item.detail %></td>
+          <td><%= @eview.detail %></td>
         </tr>
         </table>
         <div>
@@ -31,7 +31,6 @@
           <% end %>
         </div>
         <div>
-          
         </div>
       </div>
   </div>

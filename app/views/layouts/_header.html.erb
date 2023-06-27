@@ -11,7 +11,7 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
       <ul class="navbar-nav row">
-        <!--顧客がログインしていた場合-->
+        <!--ユーザーがログインしていた場合-->
         <% if user_signed_in? %>
           <li class="nav-item">
             <%= link_to user_path(current_user), class: "nav-link text-dark" do%>
@@ -53,7 +53,7 @@
               <% end %>
             </li>
             <li class="nav-item">
-              <%= link_to admin_categories_path, class: "nav-link text-dark" do %>
+              <%= link_to admin_categories_path, method: :delete, class: "nav-link text-dark" do %>
                 <i class="fas fa-indent fa-lg"></i>
                 カテゴリー一覧
               <% end %>

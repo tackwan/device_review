@@ -17,7 +17,7 @@
         <tbody>
           <% @reviews.each do |review| %>
           <tr>
-            <td><%= review.user.nsme </td>
+            <td><%= review.user.name %></td>
             <td>
               <%= link_to review_path(view.id) do %>
                 <%= review.name %>
