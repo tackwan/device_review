@@ -26,14 +26,19 @@
             <% end %>
           </li>
           <li class="nav-item">
-            <%= link_to destroy_user_session_path, class: "nav-link text-dark" do %>
+            <%= link_to new_review_path, class: "nav-link text-dark" do %>
+              <i class="fas fa-plus-square fa-lg"></i>
+               投稿する
+            <% end %>
+          </li>
+          <li class="nav-item">
+            <%= link_to destroy_user_session_path, method: :delete, class: "nav-link text-dark" do %>
               <i class="fas fa-sign-out-alt fa-lg"></i>
               ログアウト
             <% end %>
           </li>
-        <% elsif %>
+        <% elsif admin_signed_in? %>
         <!--管理者がログインしていた場合-->
-          <% if admin_signed_in? %>
             <li class="nav-item">
               <%= link_to admin_reviews_path, class: "nav-link text-dark" do %>
                 <i class="fas fa-store fa-lg"></i>
@@ -53,18 +58,18 @@
               <% end %>
             </li>
             <li class="nav-item">
-              <%= link_to admin_categories_path, method: :delete, class: "nav-link text-dark" do %>
+              <%= link_to admin_categories_path, class: "nav-link text-dark" do %>
                 <i class="fas fa-indent fa-lg"></i>
                 カテゴリー一覧
               <% end %>
             </li>
             <li class="nav-item">
-              <%= link_to destroy_admin_session_path, class: "nav-link text-dark" do %>
+              <%= link_to destroy_admin_session_path, method: :delete, class: "nav-link text-dark" do %>
                 <i class="fas fa-sign-out-alt fa-lg"></i>
                 ログアウト
               <% end %>
             </li>
-          <% end %>
+
         <% else %>
         <!--ログインしていない場合-->
           <li class="nav-item">

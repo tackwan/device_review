@@ -24,6 +24,23 @@
           <th>レビュー詳細</th>
           <td><%= @eview.detail %></td>
         </tr>
+        <tr>
+          <th></th>
+          <td>
+            <div id="star-rate<%= @book.id%>"></td>
+             <script>
+              $('#star-rate<%= @book.id %>').empty();
+              $('#star-rate<%= @book.id%>').raty({
+                 size      : 36,
+                 starOff   : '<%= asset_path('star-off.png') %>',
+                 starOn    : '<%= asset_path('star-on.png') %>',
+                 half      : false,
+                 readOnly: true,
+                 score: <%= @book.star %>,
+               });
+             </script>
+          </td>
+        </tr>
         </table>
         <div>
           <% if review.user == current_user %>
