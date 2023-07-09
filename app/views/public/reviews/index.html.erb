@@ -11,7 +11,7 @@
             <th>メーカー</th>
             <th>カテゴリー</th>
             <th>レビュー</th>
-            <th></th>
+            <th>コメント数</th>
           </tr>
         </thead>
         <tbody>
@@ -19,27 +19,29 @@
           <tr>
             <td><%= review.user.name %></td>
             <td>
-              <%= link_to review_path(view.id) do %>
+              <%= link_to review_path(review.id) do %>
                 <%= review.name %>
               <% end %>
             </td>
             <td><%= review.maker %></td>
-            <td><%= review.category %></td>
+            <td><%= review.category.name %></td>
             <td>
-              <div id="star-rate<%= book.id%>"> </td>
+              <div id="star-rate<%= review.id%>"> </td>
               <script>
-              $('#star-rate<%= book.id %>').empty();
-              $('#star-rate<%= book.id%>').raty({
+              $('#star-rate<%= review.id %>').empty();
+              $('#star-rate<%= review.id%>').raty({
                 size      : 36,
                 starOff   : '<%= asset_path('star-off.png') %>',
                 starOn    : '<%= asset_path('star-on.png') %>',
                 half      : false,
                 readOnly: true,
-                score: <%= book.star %>,
+                score: <%= review.star %>,
               });
               </script>
-              </div>    
-            
+              </div>
+            <td>
+              <%= link_to "#{post_image.post_comments.count} ", review_path(review.id) %>
+            </td>
           </tr>
           <% end %>
         </tbody>

@@ -10,7 +10,7 @@
       </div>
       <!-- エラーメッセージ表示-->
       <% if @form.errors.any? %>
-        <h3><%= @form.errors.count %>件のエラーが発生しました</h3><!--エラーメッセ-->
+        <h3><%= @form.errors.count %>件のエラーが発生しました</h3>
         <ul>
           <% @form.errors.full_messages.each do |message| %>
           <li><%= message %></li>
@@ -42,19 +42,9 @@
           </tr>
         </table>
         <div class="form-group" id="star">
-          <%= f.label :star,'評価' %>
+          <%= f.label :star,'評価:' %>
           <%= f.hidden_field :star, id: :review_star %>
         </div>
-        <!--<script>-->
-        <!--  $('#star').empty();-->
-        <!--  $('#star').raty({-->
-        <!--    size     : 36,-->
-        <!--    starOff:  '<%= asset_path('star-off.png') %>',-->
-        <!--    starOn : '<%= asset_path('star-on.png') %>',-->
-        <!--    scoreName: 'book[star]',-->
-        <!--    half: false,-->
-        <!--  });-->
-        <!--</script>-->
         <script>
           let bookFormScore = document.querySelector('#star');
           let bookFormScoreOption = {

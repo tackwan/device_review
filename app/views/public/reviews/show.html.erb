@@ -22,32 +22,74 @@
         </tr>
         <tr>
           <th>レビュー詳細</th>
-          <td><%= @eview.detail %></td>
+          <td><%= @review.detail %></td>
         </tr>
         <tr>
           <th></th>
           <td>
-            <div id="star-rate<%= @book.id%>"></td>
-             <script>
-              $('#star-rate<%= @book.id %>').empty();
-              $('#star-rate<%= @book.id%>').raty({
-                 size      : 36,
-                 starOff   : '<%= asset_path('star-off.png') %>',
-                 starOn    : '<%= asset_path('star-on.png') %>',
-                 half      : false,
-                 readOnly: true,
-                 score: <%= @book.star %>,
-               });
-             </script>
+            <!--<div id="star-rate<%= @review.id%>"></td>-->
+            <!-- <script>-->
+            <!--  $('#star-rate<%= @review.id %>').empty();-->
+            <!--  $('#star-rate<%= @review.id%>').raty({-->
+            <!--     size      : 36,-->
+            <!--     starOff   : '<%= asset_path('star-off.png') %>',-->
+            <!--     starOn    : '<%= asset_path('star-on.png') %>',-->
+            <!--     half      : false,-->
+            <!--     readOnly: true,-->
+            <!--     score: <%= @review.star %>,-->
+            <!--   });-->
+            <!-- </script>-->
+            <div id="star_<%= @review.id %>"></div>
+              <script>
+              $(document).on('turbolinks:load', function() {
+                let elem = document.querySelector('#star_<%= @review.id %>');
+                if (elem == null) return;
+
+                elem.innerHTML = "";
+                let opt = {
+                  starOn: "<%= asset_path('star-on.png') %>",
+                  starOff: "<%= asset_path('star-off.png') %>",
+                  starHalf: "<%= asset_path('star-half.png') %>",
+                  score: "<%= @review.star %>",
+                  readOnly: true,
+                };
+                raty(elem, opt);
+              });
+              </script>
           </td>
         </tr>
         </table>
         <div>
-          <% if review.user == current_user %>
-            <%= link_to "編集する", edit_review_path(@item), class: "btn btn-success" %>
+          <% if @review.user == current_user %>
+            <%= link_to "編集する", edit_review_path(@review), class: "btn btn-success" %>
           <% end %>
         </div>
         <div>
+          <p>コメント件数：<%= @review.comments.count %></p>
+          <% @review.comments.each do |comment| %>
+          <div class="d-flex  align-items-center">
+            <div class="p-2">
+              <%= image_tag comment.user.get_profile_image(50,50) %>
+              <div>
+                <%= comment.user.name %>
+              </div>
+              <div>
+                <% if comment.user == current_user %>
+                  <%= link_to "削除", review_comment_path(comment.review, comment), method: :delete %>
+                <% end %>
+              </div>
+            </div>
+            <div class="p-2 flex-fill"><%= comment.created_at.strftime('%Y/%m/%d') %></div>
+            <div class="p-2 flex-fill"><%= comment.comment %></div>
+
+          </div>
+          <% end %>
+        </div>
+        <div>
+          <%= form_with model: [@review, @comment] do |f| %>
+            <%= f.text_area :comment, rows: '5', placeholder: "コメントをここに" %>
+            <%= f.submit "送信する" %>
+          <% end %>
         </div>
       </div>
   </div>

@@ -10,6 +10,7 @@ class Review < ApplicationRecord
   validates :detail, presence: true
   validates :maker, presence: true
   
+  
   def self.looks(search, word)
     if search == "perfect_match"
       @review = Review.where("name LIKE?", "#{word}")
