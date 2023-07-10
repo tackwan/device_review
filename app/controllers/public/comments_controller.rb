@@ -13,6 +13,7 @@ class Public::CommentsController < ApplicationController
     Comment.find(params[:id]).destroy
     redirect_to review_path(params[:review_id])
   end 
+  
   private
 
   def comment_params
