@@ -1,8 +1,8 @@
-<%= render "layouts/header" %>
 <div class="container px-5">
   <div class="row mx-auto mt-5">
     <div class="col-11">
-      <h2>商品一覧</h2>
+      <h2>投稿一覧</h2>
+      <%= render "public/searches/search" %>
       <table class="table table-hover table-inverse table-borderless">
         <thead>
           <tr>
@@ -17,12 +17,8 @@
         <tbody>
           <% @reviews.each do |review| %>
           <tr>
-            <td><%= review.user.name %></td>
-            <td>
-              <%= link_to review_path(review.id) do %>
-                <%= review.name %>
-              <% end %>
-            </td>
+            <td><%= link_to review.user.name, user_path(review.user.id) %></td>
+            <td><%= link_to review.name, review_path(review.id) %></td>
             <td><%= review.maker %></td>
             <td><%= review.category.name %></td>
             <td>
@@ -40,7 +36,7 @@
               </script>
               </div>
             <td>
-              <%= link_to "#{post_image.post_comments.count} ", review_path(review.id) %>
+              <%= link_to "#{review.comments.count}", review_path(review.id) %>
             </td>
           </tr>
           <% end %>

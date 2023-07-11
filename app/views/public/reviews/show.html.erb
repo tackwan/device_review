@@ -1,10 +1,10 @@
-<%= render 'layouts/header'%>
 <div class="container px-5">
   <h2>レビュー詳細</h2>
   <%= flash[:notice] %>
   <div class="row">
       <div class="col-5 mt-5">
-        <%= image_tag @review.image, class: "img-fluid" %>
+        <h2>ユーザー</h2>
+        <%= render 'public/users/info', user: @user %>
       </div>
       <div class="col-7 mt-5">
         <table class="table table-hover table-inverse table-borderless">
@@ -67,7 +67,7 @@
         <div>
           <p>コメント件数：<%= @review.comments.count %></p>
           <% @review.comments.each do |comment| %>
-          <div class="d-flex  align-items-center">
+          <div class="d-flex align-items-center">
             <div class="p-2">
               <%= image_tag comment.user.get_profile_image(50,50) %>
               <div>

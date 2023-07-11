@@ -1,5 +1,5 @@
 class Public::ReviewsController < ApplicationController
-  # before_action :authenticate_user!
+  before_action :authenticate_user!, except:[:index, :show]
   def new
     @form = Review.new
   end
@@ -23,6 +23,7 @@ class Public::ReviewsController < ApplicationController
   def show
     @review = Review.find(params[:id])
     @comment = Comment.new
+    @user = @review.user
   end
 
   def edit
