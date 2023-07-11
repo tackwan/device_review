@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   scope module: :public do 
     root :to => "homes#top"
     get "about" => "homes#about"
+    post '/homes/guest_sign_in', to: 'homes#guest_sign_in'
     resources :users, only: [:show, :edit, :update] do
       resource :relationships, only: [:create, :destroy]
       get 'followings' => 'relationships#followings', as: "followings"
@@ -28,6 +29,7 @@ Rails.application.routes.draw do
     resources :reviews do
       resources :comments, only: [:create, :destroy]
     end
+    get "search" => "searches#search"
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

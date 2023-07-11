@@ -15,7 +15,7 @@
         <% if user_signed_in? %>
           <li class="nav-item">
             <%= link_to user_path(current_user), class: "nav-link text-dark" do%>
-              <i class="fas fa-user-alt fa-lg"></i>
+              <i class="fas fa-user-circle fa-lg"></i>
               マイページ
             <% end %>
           </li>
@@ -69,7 +69,6 @@
                 ログアウト
               <% end %>
             </li>
-
         <% else %>
         <!--ログインしていない場合-->
           <li class="nav-item">
@@ -94,6 +93,12 @@
             <%= link_to new_user_session_path, class: "nav-link text-dark" do %>
               <i class="fas fa-sign-in-alt fa-lg"></i>
               ログイン
+            <% end %>
+          </li>
+          <li class="nav-item">
+            <%= link_to homes_guest_sign_in_path, method: :post, class: "nav-link text-dark" do %>
+              <i class="fas fa-sign-in-alt fa-lg"></i>
+              ゲストログイン
             <% end %>
           </li>
         <% end %>
