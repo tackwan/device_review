@@ -1,7 +1,7 @@
 <div class="container px-3">
   <div class="row mx-auto mt-5">
     <div class="col-3 mt-5">
-      <h4>カテゴリー検索</h4>
+      <h3>カテゴリー検索</h3>
       <p><%= link_to "マウス", reviews_mouse_path %></p>
       <p><%= link_to "キーボード", reviews_keyboard_path %></p>
       <p><%= link_to "マウスパッド", reviews_mousepad_path %></p>
@@ -30,7 +30,19 @@
             <td><%= review.maker %></td>
             <td><%= review.category.name %></td>
             <td>
-              <%= render"public/reviews/staticrate", review: review %> 
+              <div id="star-rate<%= review.id%>"> </td>
+              <script>
+              $('#star-rate<%= review.id %>').empty();
+              $('#star-rate<%= review.id%>').raty({
+                size      : 36,
+                starOff   : '<%= asset_path('star-off.png') %>',
+                starOn    : '<%= asset_path('star-on.png') %>',
+                half      : false,
+                readOnly: true,
+                score: <%= review.star %>,
+              });
+              </script>
+              </div>
             <td>
               <%= link_to "#{review.comments.count}", review_path(review.id) %>
             </td>

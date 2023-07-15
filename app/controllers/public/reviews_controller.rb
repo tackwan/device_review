@@ -1,9 +1,10 @@
 class Public::ReviewsController < ApplicationController
   before_action :authenticate_user!, except:[:index, :show]
+  before_action :guest_check, only: [:new, :edit]
   def new
     @form = Review.new
   end
-
+  
   def create
     @form = Review.new(review_params)
     @form.user_id = current_user.id
@@ -41,7 +42,34 @@ class Public::ReviewsController < ApplicationController
       render :edit
     end
   end
-
+  
+  #カテゴリー絞り込み表示用のアクション
+  def mouse 
+    @reviews = Review.all
+    @mouse = Review.where(maker:"マウス")
+  end 
+  
+  def keyboard 
+    @reviews = Review.all
+    @mouse = Review.where(maker:"キーボード")
+  end 
+  
+  def mousepad 
+    @reviews = Review.all
+    @mouse = Review.where(maker:"マウスパッド")
+  end 
+  
+  def headset 
+    @reviews = Review.all
+    @mouse = Review.where(maker:"ヘッドセット")
+  end 
+  
+  def monitor 
+    @reviews = Review.all
+    @mouse = Review.where(maker:"モニター")
+  end 
+  
+  
   private
 
   def review_params

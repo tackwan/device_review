@@ -13,4 +13,11 @@ class ApplicationController < ActionController::Base
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up,keys:[:name])
   end
+  
+  def guest_check
+    if current_user.name == "ゲスト"
+      flash[:notice] = "このページを見るには会員登録が必要です。"
+      redirect_to root_path
+    end
+  end
 end
