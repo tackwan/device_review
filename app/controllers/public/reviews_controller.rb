@@ -4,9 +4,10 @@ class Public::ReviewsController < ApplicationController
   def new
     @form = Review.new
   end
-  
+
   def create
     @form = Review.new(review_params)
+    @form.star = params[:score]
     @form.user_id = current_user.id
     if @form.save
       flash[:notice] = "投稿が成功しました"
@@ -29,12 +30,12 @@ class Public::ReviewsController < ApplicationController
 
   def edit
     @review = Review.find(params[:id])
-    
   end
 
   def update
     @review = Review.find(params[:id])
-    if @review.update(review_params)
+    @star = params[:score]
+    if @review.update(review_params.merge(star: @star))
       redirect_to review_path(@review.id)
       flash[:notice] = "投稿を更新しました"
     else
@@ -42,34 +43,34 @@ class Public::ReviewsController < ApplicationController
       render :edit
     end
   end
-  
+
   #カテゴリー絞り込み表示用のアクション
-  def mouse 
+  def mouse
     @reviews = Review.all
     @mouse = Review.where(maker:"マウス")
-  end 
-  
-  def keyboard 
+  end
+
+  def keyboard
     @reviews = Review.all
     @mouse = Review.where(maker:"キーボード")
-  end 
-  
-  def mousepad 
+  end
+
+  def mousepad
     @reviews = Review.all
     @mouse = Review.where(maker:"マウスパッド")
-  end 
-  
-  def headset 
+  end
+
+  def headset
     @reviews = Review.all
     @mouse = Review.where(maker:"ヘッドセット")
-  end 
-  
-  def monitor 
+  end
+
+  def monitor
     @reviews = Review.all
     @mouse = Review.where(maker:"モニター")
-  end 
-  
-  
+  end
+
+
   private
 
   def review_params

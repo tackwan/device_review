@@ -14,7 +14,7 @@
       <table class="table table-hover table-inverse table-borderless">
         <thead>
           <tr>
-            <th>ユーザー</th>
+            <th></th>
             <th>デバイス名</th>
             <th>メーカー</th>
             <th>カテゴリー</th>
@@ -25,12 +25,12 @@
         <tbody>
           <% @reviews.each do |review| %>
           <tr>
-            <td><%= link_to review.user.name, user_path(review.user.id) %></td>
+            <td><%= image_tag review.get_image(80, 80)%></td>
             <td><%= link_to review.name, review_path(review.id) %></td>
             <td><%= review.maker %></td>
             <td><%= review.category.name %></td>
             <td>
-              <%= render"public/reviews/staticrate", review: review %> 
+              <%= render"public/reviews/staticrate", review: review %>
             <td>
               <%= link_to "#{review.comments.count}", review_path(review.id) %>
             </td>

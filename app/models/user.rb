@@ -33,11 +33,12 @@ class User < ApplicationRecord
     end
   profile_image.variant(resize_to_limit: [width, height]).processed
   end
-
+  
+# フォローする
   def follow(user)
     relationships.create(followed_id: user.id)
   end
-
+# フォローを外す
   def unfollow(user)
     relationships.find_by(followed_id: user.id).destroy
   end
@@ -46,6 +47,7 @@ class User < ApplicationRecord
     followings.include?(user)
   end
 
+# 検索用のアクション
   def self.looks(search, word)
     if search == "perfect_match"
       @user = User.where("name LIKE?", "#{word}")

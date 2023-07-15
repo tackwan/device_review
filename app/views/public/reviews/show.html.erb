@@ -7,6 +7,9 @@
         <%= render 'public/users/info', user: @user %>
       </div>
       <div class="col-9 mt-5">
+        <div>
+          <%= image_tag @review.get_image(200, 200)%>
+        </div>
         <table class="table table-hover table-inverse table-borderless">
         <tr>
           <th>デバイス名</th>

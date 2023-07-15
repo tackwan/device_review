@@ -1,12 +1,14 @@
 <!--レビュー評価の表示用の部分テンプレート-->
 <div id="star_<%= review.id %>"></div>
 <script>
-$(document).on('turbolinks:load', function() {
+// $(document).on('turbolinks:load', function() {
+
+$(document).ready(function() {
   let elem = document.querySelector('#star_<%= review.id %>');
   if (elem == null) return;
-  
+
   elem.innerHTML = "";
-  let opt = {  
+  let opt = {
     starOn: "<%= asset_path('star-on.png') %>",
     starOff: "<%= asset_path('star-off.png') %>",
     starHalf: "<%= asset_path('star-half.png') %>",
