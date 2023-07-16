@@ -29,12 +29,6 @@ Rails.application.routes.draw do
     resources :reviews do
       resources :comments, only: [:create, :destroy]
     end
-    #絞り込み表示用の画面表示
-    get "reviews/mouse" => "reviews#mouse"
-    get "reviews/keyboard" => "reviews#keyboard"
-    get "reviews/mousepad" => "reviews#mousepad"
-    get "reviews/headset" => "reviews#headset"
-    get "reviews/monitor" => "reviews#monitor"
     get "search" => "searches#search"
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

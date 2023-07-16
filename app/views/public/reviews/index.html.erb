@@ -1,15 +1,18 @@
 <div class="container px-3">
   <div class="row mx-auto mt-5">
     <div class="col-3 mt-5">
-      <h4>カテゴリー検索</h4>
-      <p><%= link_to "マウス", reviews_mouse_path %></p>
-      <p><%= link_to "キーボード", reviews_keyboard_path %></p>
-      <p><%= link_to "マウスパッド", reviews_mousepad_path %></p>
-      <p><%= link_to "ヘッドセット", reviews_headset_path %></p>
-      <p><%= link_to "モニター", reviews_monitor_path %></p>
-    </div>
+        <h4>カテゴリー検索</h4>
+      <%= form_with url: reviews_path, method: :get do |f| %>
+        <%= f.collection_select :category_id, Category.all, :id, :name %>
+        <%= f.submit "検索", class: 'btn btn-primary'%>
+      <% end %>
+    </div> 
     <div class="col-9">
-      <h2>投稿一覧</h2>
+      <% if @category.present? %>
+        <h2>投稿一覧(<%= @category.name %>)</h2>
+      <% else %>
+        <h2>投稿一覧</h2>
+      <% end %>
       <%= render "public/searches/search" %>
       <table class="table table-hover table-inverse table-borderless">
         <thead>
@@ -18,7 +21,7 @@
             <th>デバイス名</th>
             <th>メーカー</th>
             <th>カテゴリー</th>
-            <th>レビュー</th>
+            <th>評価</th>
             <th>コメント数</th>
           </tr>
         </thead>
