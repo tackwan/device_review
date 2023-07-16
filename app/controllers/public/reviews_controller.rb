@@ -19,7 +19,13 @@ class Public::ReviewsController < ApplicationController
   end
 
   def index
-    @reviews = Review.page(params[:page])
+    @reviews = Review.all.page(params[:page])
+    if params[:category_id].present?
+      @category = Category.find_by(id: params[:category_id])
+      if @category.present?
+        @reviews = @category.reviews.page(params[:page])
+      end
+    end
   end
 
   def show
@@ -46,28 +52,28 @@ class Public::ReviewsController < ApplicationController
 
   #カテゴリー絞り込み表示用のアクション
   def mouse
-    @reviews = Review.all
-    @mouse = Review.where(maker:"マウス")
+    @reviews = Review.page(params[:page])
+    @mouse = Review.joins(:category).where(category: { name: "マウス" })
   end
 
   def keyboard
     @reviews = Review.all
-    @mouse = Review.where(maker:"キーボード")
+    @keyboard = Review.where(category:"キーボード")
   end
 
   def mousepad
     @reviews = Review.all
-    @mouse = Review.where(maker:"マウスパッド")
+    @mousepad = Review.where(category:"マウスパッド")
   end
 
   def headset
     @reviews = Review.all
-    @mouse = Review.where(maker:"ヘッドセット")
+    @headset = Review.where(category:"ヘッドセット")
   end
 
   def monitor
     @reviews = Review.all
-    @mouse = Review.where(maker:"モニター")
+    @monitor = Review.where(maker:"モニター")
   end
 
 
