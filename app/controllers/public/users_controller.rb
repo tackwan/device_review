@@ -2,9 +2,10 @@ class Public::UsersController < ApplicationController
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :authenticate_user!
   before_action :is_matching_login_user, only: [:edit,:update]
-  
+
   def show
     @user = User.find(params[:id])
+    @reviews = @user.reviews.all.page(params[:page])
   end
 
   def edit
@@ -25,7 +26,7 @@ class Public::UsersController < ApplicationController
   def check
     @user = current_user
   end
-
+# 退会処理
   def withdrawal
     @user = current_user
     #is_deletedカラムをtrueに変更することにより削除フラグを立てる
@@ -37,9 +38,9 @@ class Public::UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:name, :email)
+    params.require(:user).permit(:name, :email, :page, :profile_image)
   end
-
+  # ゲストログインの判別
   def is_matching_login_user
     user = User.find(params[:id])
     unless user.id == current_user.id

@@ -1,14 +1,12 @@
-<div class="container px-5">
+<div class="container">
   <div class="row">
-    <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
-      <table class="table table-hover table-inverse">
-      <h2><%= @user.name %></h2>
-      <h4>登録情報</h4><%= link_to "編集する", edit_user_path(@user.id), class:"btn btn-success" %>
+    <div class="col mx-auto">
+      <h1><%= @user.name %></h1>
+      <h4>登録情報</h4>
       <%= flash[:notice] %>
       <table class="table table-hover table-inverse table-bordered">
         <tr>
-          <th><%= image_tag @user.get_profile_image(100,100), class: "img-fluid" %></th>
-
+          <th><%= image_tag @user.get_profile_image(100,100) %></th>
         </tr>
         <tr>
           <th>名前</th>
@@ -38,11 +36,40 @@
           <% end %>
         <% end %>
       </div>
+      <% if @user == current_user %>
+        <%= link_to "編集する", edit_user_path(@user.id), class:"btn btn-success" %>
+      <% end %>
     </div>
   </div>
-  <div class="row">
-    <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 p-4 mx-auto">
-      <h4 class="d-inline mr-5 ">投稿一覧</h4><%= link_to "一覧を見る", reviews_path, class:"btn btn-primary ml-5" %><br>
-    </div>
+  <div class="row pt-3">
+    <h4 class="d-inline mr-5 ">投稿一覧</h4>
+    <table class="table table-hover table-inverse table-borderless">
+      <thead>
+        <tr>
+          <th></th>
+          <th>デバイス名</th>
+          <th>メーカー</th>
+          <th>カテゴリー</th>
+          <th>評価</th>
+          <th>コメント数</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @reviews.each do |review| %>
+        <tr>
+          <td><%= image_tag review.get_image(80, 80)%></td>
+          <td><%= link_to review.name, review_path(review.id) %></td>
+          <td><%= review.maker %></td>
+          <td><%= review.category.name %></td>
+          <td>
+            <%= render"public/reviews/staticrate", review: review %>
+          <td>
+            <%= link_to "#{review.comments.count}", review_path(review.id) %>
+          </td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <%= paginate @reviews %>
   </div>
 </div>
