@@ -1,11 +1,10 @@
-<%= render "layouts/header" %>
 <div class='container px-5'>
   <h2>ジャンル編集</h2>
   <div class='row mt-5'>
     
     <%= flash[:notice] %>
       <!-- エラーメッセージ表示-->
-      <% if @.errors.any? %>
+      <% if @category.errors.any? %>
         <h3><%= @category.errors.count %>件のエラーが発生しました</h3><!--エラーメッセ-->
         <ul>
           <% @category.errors.full_messages.each do |message| %>

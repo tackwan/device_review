@@ -1,6 +1,6 @@
 class Public::ReviewsController < ApplicationController
   before_action :authenticate_user!, except:[:index, :show]
-  before_action :guest_check, only: [:new, :edit]
+  before_action :guest_check, only: [ :edit, :destroy]
   def new
     @form = Review.new
   end
@@ -49,34 +49,13 @@ class Public::ReviewsController < ApplicationController
       render :edit
     end
   end
-
-  #カテゴリー絞り込み表示用のアクション
-  def mouse
-    @reviews = Review.page(params[:page])
-    @mouse = Review.joins(:category).where(category: { name: "マウス" })
+  
+  def destroy
+    @review = Review.find(params[:id])
+    @review.destroy
+    redirect_to "/reviews"
   end
-
-  def keyboard
-    @reviews = Review.all
-    @keyboard = Review.where(category:"キーボード")
-  end
-
-  def mousepad
-    @reviews = Review.all
-    @mousepad = Review.where(category:"マウスパッド")
-  end
-
-  def headset
-    @reviews = Review.all
-    @headset = Review.where(category:"ヘッドセット")
-  end
-
-  def monitor
-    @reviews = Review.all
-    @monitor = Review.where(maker:"モニター")
-  end
-
-
+  
   private
 
   def review_params
