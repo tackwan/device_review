@@ -43,6 +43,8 @@
   </div>
   <div class="row pt-3">
     <h4 class="d-inline mr-5 ">投稿一覧</h4>
+    <!--投稿があれば表示-->
+    <% if @reviews.present? %>
     <table class="table table-hover table-inverse table-borderless">
       <thead>
         <tr>
@@ -70,6 +72,7 @@
         <% end %>
       </tbody>
     </table>
+    <% end %>
     <%= paginate @reviews %>
   </div>
 </div>

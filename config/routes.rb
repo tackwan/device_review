@@ -9,10 +9,14 @@ Rails.application.routes.draw do
     sessions: "admin/sessions"
   }
   namespace :admin do
-    root :to => "homes#top"
-    resources :users, only: [:index, :show, :edit, :update]
+    root :to => "reviews#index"
+    resources :users, only: [:index, :show, :edit, :update] do
+      get 'followings' => 'relationships#followings', as: "followings"
+      get 'followers' => 'relationships#followers', as: "followers"
+    end
     resources :reviews, only: [:index, :show, :edit, :update, :destroy]
     resources :categories, only: [:index, :create, :edit, :update]
+    get "/search" => "searches#search"
   end
   #ユーザー用
   scope module: :public do

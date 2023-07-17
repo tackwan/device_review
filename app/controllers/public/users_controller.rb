@@ -26,6 +26,7 @@ class Public::UsersController < ApplicationController
   def check
     @user = current_user
   end
+  
 # 退会処理
   def withdrawal
     @user = current_user

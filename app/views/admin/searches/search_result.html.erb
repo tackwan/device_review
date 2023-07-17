@@ -1,0 +1,64 @@
+<div class="container px-5">
+  <div class="row">
+    <div class="col mx-auto">
+      <h2>検索結果</h2>
+      <%= render "public/searches/search" %>
+      <table class="table table-hover table-inverse">
+        <% if @range == "ユーザー" %>
+        <thead>
+          <tr>
+            <th></th>
+            <th>ユーザー</th>
+            <th>フォロー</th>
+            <th>フォロワー</th>
+            <th></th>
+          </tr>
+          </thead>
+          <tbody>
+           <% @users.each do |user| %>
+              <tr>
+                <td><%= image_tag user.get_profile_image(100,100) %></td>
+                <td><h4><%= link_to user.name, user_path(user.id) %></h4></td>
+                <td><h4><%= link_to user.followings.count, user_followings_path(user) %></h4></td>
+                <td><h4><%= link_to user.followers.count, user_followers_path(user) %></h4></td>
+                <td>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        <% else %>
+        <thead>
+          <tr>
+            <th></th>
+            <th>ユーザー</th>
+            <th>デバイス名</th>
+            <th>メーカー</th>
+            <th>カテゴリー</th>
+            <th>評価</th>
+          </tr>
+          </thead>
+          <tbody>
+            <% @reviews.each do |review| %>
+              <tr>
+                <td><%= image_tag review.get_image(80, 80)%></td>
+                <td>
+                  <%= link_to review.user.name, user_path(review.user.id) %>
+                </td>
+                <td>
+                  <%= link_to review_path(review.id) do %>
+                    <%= review.name %>
+                  <% end %>
+                </td>
+                <td><%= review.maker %></td>
+                <td><%= review.category.name %></td>
+                <td>
+                  <%= render"public/reviews/staticrate", review: review %>
+                <td>
+              </tr>
+            <% end %>
+          </tbody>
+        <% end %>
+      </table>
+    </div>
+  </div>
+</div>

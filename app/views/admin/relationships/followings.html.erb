@@ -1,0 +1,8 @@
+<div class="row mt-3 mx-auto">
+  <h2>フォロー</h2>
+  <% if @users.exists? %>
+    <%= render 'admin/users/index', users: @users %>
+  <% else %>
+    <div><h2>ユーザーはいません</h2></div></p>
+  <% end %>
+</div>
