@@ -1,14 +1,15 @@
-<div class="container mt-5">
+<div class="container-fluid mt-5 top" style="height: 600px;">
   <%= flash[:notice] %>
   <div class="row">
-    <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto mt-5">
+    <div class="col-6 px-5 mx-auto mt-5">
       <p class="h5">
         ようこそ、ゲーミングデバイスの決め所へ！<br>
         このサイトは、ゲーミングデバイスのレビュー投稿サイトです。<br>
-        自分が使ったデバイスの投稿をしたり、欲しいデバイスの購入のきっかけにしてみてください<br>
+        自分が使ったデバイスのレビューを投稿をしたり、デバイス探しの購入のきっかけにしてみてください<br>
       </p>
     </div>
   </div>
-  <p><%= link_to "投稿を見る=>", reviews_path %></p>
 </div>
-
+<div class="row mx-auto">
+  <h3><%= link_to "投稿を見る=>", reviews_path %></h3>
+</div>

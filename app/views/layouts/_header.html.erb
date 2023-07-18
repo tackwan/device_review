@@ -1,17 +1,15 @@
 <header>
-  <nav class="navbar navbar-expand-md navbar-light bg-danger">
-    <div class="container">
-      <a class="navbar-brand" href="/">
-        <i class="fas fa-gamepad fa-lg"></i>
-        ゲーミングデバイスの決め所
-      </a>
-    </div>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNavDropdown">
-      <ul class="navbar-nav">
-        <!--ユーザーがログインしていた場合-->
+<nav class="navbar navbar-expand-lg navbar-light bg-danger">
+  <a class="navbar-brand" href="/">
+    <i class="fas fa-gamepad fa-lg" style="color: #23231f;"></i>
+    ゲーミングデバイスの決め所
+  </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav ml-auto">
+ <!--ユーザーがログインしていた場合-->
         <% if user_signed_in? %>
           <li class="nav-item">
             <%= link_to user_path(current_user), class: "nav-link text-dark" do%>
@@ -66,12 +64,6 @@
         <% else %>
         <!--ログインしていない場合-->
           <li class="nav-item">
-            <%= link_to about_path, class: "nav-link text-dark" do %>
-              <i class="fas fa-info-circle fa-lg"></i>
-              About
-            <% end %>
-          </li>
-          <li class="nav-item">
             <%= link_to reviews_path, class: "nav-link text-dark" do %>
               <i class="fas fa-store fa-lg"></i>
               投稿一覧
@@ -96,7 +88,28 @@
             <% end %>
           </li>
         <% end %>
-      </ul>
-    </div>
-  </nav>
-</header>
+
+  </div>
+</nav>
+<header>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
