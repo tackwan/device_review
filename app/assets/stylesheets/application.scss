@@ -13,3 +13,9 @@
  *= require_tree .
  *= require_self
  */
+
+.top{
+   background-image: image-url("white.jpg");
+   background-size:  cover;
+   height: 100%;
+}
