@@ -1,6 +1,6 @@
 class Public::HomesController < ApplicationController
-  def
-    top
+  def top
+    @top_reviews = Review.recent_reviews
   end
 
   def guest_sign_in
