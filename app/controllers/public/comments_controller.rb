@@ -1,5 +1,6 @@
 class Public::CommentsController < ApplicationController
   before_action :authenticate_user!
+  before_action :guest_check
   def create
     review = Review.find(params[:review_id])
     comment = Comment.new(comment_params)

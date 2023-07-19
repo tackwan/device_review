@@ -9,10 +9,21 @@ class ApplicationController < ActionController::Base
       root_path
     end
   end
+  
+  # ゲストログイン
+  def guest_sign_in
+    user = User.find_or_create_by!(email: 'guest@example.com') do |user|
+      user.password = SecureRandom.urlsafe_base64
+      user.name = "ゲスト"
+    end
+    sign_in user
+    redirect_to root_path, notice: 'ゲストユーザーとしてログインしました。'
+  end
 
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up,keys:[:name])
   end
+  
   # ゲストログインのできることを制限する
   def guest_check
     if current_user.name == "ゲスト"

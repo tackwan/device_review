@@ -1,4 +1,4 @@
-<div class="container-fluid mt-5 top" style="height: 600px;">
+<div class="container-fluid top" style="height: 400px;">
   <%= flash[:notice] %>
   <div class="row">
     <div class="col-6 px-5 mx-auto mt-5">
@@ -10,6 +10,26 @@
     </div>
   </div>
 </div>
-<div class="row mx-auto">
+<div><h3>最新投稿</h3></div>
+<div class="row mt-3 mx-auto">
+  <% @top_reviews.each do |review| %>
+    <div class="col border border-danger">
+      <div>
+        <%= link_to review_path(review.id) do %>
+          <%= image_tag review.image, size: "150x150" %>
+        <% end %>
+      </div>
+      <div>
+        <%= link_to review_path(review.id) do %>
+          <%= review.name %>
+        <% end %>
+      </div>
+      <div>
+        <%= render"public/reviews/staticrate", review: review %>
+      </div>
+    </div>
+  <% end %>
+</div>
+<div class="row mx-auto mt-2">
   <h3><%= link_to "投稿を見る=>", reviews_path %></h3>
 </div>
