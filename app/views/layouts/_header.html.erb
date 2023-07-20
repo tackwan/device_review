@@ -2,7 +2,7 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-danger">
   <a class="navbar-brand" href="/">
     <i class="fas fa-gamepad fa-lg" style="color: #23231f;"></i>
-    ゲーミングデバイスの決め所
+    <h4>ゲーミングデバイスの決め所</h4>
   </a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -10,85 +10,85 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav ml-auto">
  <!--ユーザーがログインしていた場合-->
-        <% if user_signed_in? %>
-          <li class="nav-item">
-            <%= link_to user_path(current_user), class: "nav-link text-dark" do%>
-              <i class="fas fa-user-circle fa-lg"></i>
-              マイページ
-            <% end %>
-          </li>
-          <li class="nav-item">
-            <%= link_to reviews_path, class: "nav-link text-dark" do %>
-              <i class="fas fa-store fa-lg"></i>
-               投稿一覧
-            <% end %>
-          </li>
-          <li class="nav-item">
-            <%= link_to new_review_path, class: "nav-link text-dark" do %>
-              <i class="fas fa-plus-square fa-lg"></i>
-               投稿する
-            <% end %>
-          </li>
-          <li class="nav-item">
-            <%= link_to destroy_user_session_path, method: :delete, class: "nav-link text-dark" do %>
-              <i class="fas fa-sign-out-alt fa-lg"></i>
-              ログアウト
-            <% end %>
-          </li>
+      <% if user_signed_in? %>
+        <li class="nav-item">
+          <%= link_to user_path(current_user), class: "nav-link text-dark" do%>
+            <i class="fas fa-user-circle fa-lg"></i>
+            マイページ
+          <% end %>
+        </li>
+        <li class="nav-item">
+          <%= link_to reviews_path, class: "nav-link text-dark" do %>
+            <i class="fas fa-store fa-lg"></i>
+            投稿一覧
+          <% end %>
+        </li>
+        <li class="nav-item">
+          <%= link_to new_review_path, class: "nav-link text-dark" do %>
+            <i class="fas fa-plus-square fa-lg"></i>
+            投稿する
+          <% end %>
+        </li>
+        <li class="nav-item">
+          <%= link_to destroy_user_session_path, method: :delete, class: "nav-link text-dark" do %>
+            <i class="fas fa-sign-out-alt fa-lg"></i>
+            ログアウト
+          <% end %>
+        </li>
         <% elsif admin_signed_in? %>
         <!--管理者がログインしていた場合-->
-            <li class="nav-item">
-              <%= link_to admin_users_path, class: "nav-link text-dark" do %>
-                <i class="fas fa-users fa-lg"></i>
-                ユーザー一覧
-              <% end %>
-            </li>
-            <li class="nav-item">
-              <%= link_to admin_root_path, class: "nav-link text-dark" do %>
-                <i class="fas fa-tasks fa-lg"></i>
-                投稿一覧
-              <% end %>
-            </li>
-            <li class="nav-item">
-              <%= link_to admin_categories_path, class: "nav-link text-dark" do %>
-                <i class="fas fa-indent fa-lg"></i>
-                カテゴリー一覧
-              <% end %>
-            </li>
-            <li class="nav-item">
-              <%= link_to destroy_admin_session_path, method: :delete, class: "nav-link text-dark" do %>
-                <i class="fas fa-sign-out-alt fa-lg"></i>
-                ログアウト
-              <% end %>
-            </li>
+        <li class="nav-item">
+          <%= link_to admin_users_path, class: "nav-link text-dark" do %>
+            <i class="fas fa-users fa-lg"></i>
+            ユーザー一覧
+          <% end %>
+        </li>
+        <li class="nav-item">
+          <%= link_to admin_root_path, class: "nav-link text-dark" do %>
+            <i class="fas fa-tasks fa-lg"></i>
+            投稿一覧
+          <% end %>
+        </li>
+        <li class="nav-item">
+          <%= link_to admin_categories_path, class: "nav-link text-dark" do %>
+            <i class="fas fa-indent fa-lg"></i>
+            カテゴリー一覧
+          <% end %>
+        </li>
+        <li class="nav-item">
+          <%= link_to destroy_admin_session_path, method: :delete, class: "nav-link text-dark" do %>
+            <i class="fas fa-sign-out-alt fa-lg"></i>
+            ログアウト
+          <% end %>
+        </li>
         <% else %>
         <!--ログインしていない場合-->
-          <li class="nav-item">
-            <%= link_to reviews_path, class: "nav-link text-dark" do %>
-              <i class="fas fa-store fa-lg"></i>
-              投稿一覧
-            <% end %>
-          </li>
-          <li class="nav-item">
-            <%= link_to new_user_registration_path, class: "nav-link text-dark" do %>
-              <i class="fas fa-user-plus fa-lg"></i>
-              新規登録
-            <% end %>
-          </li>
-          <li class="nav-item">
-            <%= link_to new_user_session_path, class: "nav-link text-dark" do %>
-              <i class="fas fa-sign-in-alt fa-lg"></i>
-              ログイン
-            <% end %>
-          </li>
-          <li class="nav-item">
-            <%= link_to homes_guest_sign_in_path, method: :post, class: "nav-link text-dark" do %>
-              <i class="fas fa-sign-in-alt fa-lg"></i>
-              ゲストログイン
-            <% end %>
-          </li>
-        <% end %>
-
+        <li class="nav-item">
+          <%= link_to reviews_path, class: "nav-link text-dark" do %>
+            <i class="fas fa-store fa-lg"></i>
+            投稿一覧
+          <% end %>
+        </li>
+        <li class="nav-item">
+          <%= link_to new_user_registration_path, class: "nav-link text-dark" do %>
+            <i class="fas fa-user-plus fa-lg"></i>
+            新規登録
+          <% end %>
+        </li>
+        <li class="nav-item">
+          <%= link_to new_user_session_path, class: "nav-link text-dark" do %>
+            <i class="fas fa-sign-in-alt fa-lg"></i>
+            ログイン
+          <% end %>
+        </li>
+        <li class="nav-item">
+          <%= link_to homes_guest_sign_in_path, method: :post, class: "nav-link text-dark" do %>
+            <i class="fas fa-sign-in-alt fa-lg"></i>
+            ゲストログイン
+          <% end %>
+        </li>
+      <% end %>
+    </ul
   </div>
 </nav>
 <header>
