@@ -45,7 +45,7 @@
     <h4 class="d-inline mr-5 ">投稿一覧</h4>
     <!--投稿があれば表示-->
     <% if @reviews.present? %>
-    <table class="table table-hover table-inverse table-borderless">
+    <table class="table table-light table-hover table-inverse">
       <thead>
         <tr>
           <th></th>
@@ -59,14 +59,15 @@
       <tbody>
         <% @reviews.each do |review| %>
         <tr>
-          <td><%= image_tag review.get_image(80, 80)%></td>
+          <td><%= image_tag review.image, size: "80x80"%></td>
           <td><%= link_to review.name, review_path(review.id) %></td>
           <td><%= review.maker %></td>
           <td><%= review.category.name %></td>
           <td>
             <%= render"public/reviews/staticrate", review: review %>
           <td>
-            <%= link_to "#{review.comments.count}", review_path(review.id) %>
+            <i class="far fa-comment-dots fa-lg p-2"></i>
+              <%= review.comments.count %>
           </td>
         </tr>
         <% end %>
