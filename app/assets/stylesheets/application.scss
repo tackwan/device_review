@@ -15,11 +15,29 @@
  */
 
 .top{
-   background-image: image-url("white.jpg");
-   background-size:  cover;
+   background-image: image-url("computer.png");
+   background-repeat:  no-repeat;
+   background-size:  200px 200px;
+   background-position: 20% 80%;
    height: 100%;
 }
 
+// フォント変更
 nav, h1, h2, h3, h4{
   font-family: 'Kiwi Maru', serif;
+}
+
+// .main{
+//    background-image: image-url("white.jpg");
+//    background-size:  cover;
+//    background-position: center center;
+//    height: 100%;
+// }
+
+// ヘッダーの背景
+nav{
+   background-image: image-url("pastel.jpg");
+   background-size:  cover;
+   background-position: center center;
+   height: 80%;
 }

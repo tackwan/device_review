@@ -13,7 +13,7 @@
   <div class='row'>
     <div class='col mx-auto mt-3'>
       <%= form_with(model: @review, url: review_path(@review), method: :patch) do |f| %>
-        <table class="table table-hover table-inverse table-borderless">
+        <table class="table table-light table-hover table-inverse mt-3 h5">
           <tr>
             <th><%= f.label :image, "商品画像" %></th>
             <td><%= f.file_field :image, accept: "image/*" %></td>
@@ -34,7 +34,7 @@
             <td><%= f.text_area :detail %></td>
           </tr>
         </table>
-        <div class="form-group" id="star">
+        <div class="form-group h3" id="star">
           <%= f.label :star,'評価:' %>
           <%= f.hidden_field :star, id: :review_star %>
         </div>

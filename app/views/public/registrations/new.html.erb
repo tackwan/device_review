@@ -1,10 +1,10 @@
 <div class="container px-5">
   <div class="row">
-    <div class="col text-left">
+    <div class="col text-left mt-3">
       <h3>新規会員登録</h3>
       <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
         <%= render "public/shared/error_messages", resource: resource %>
-        <table>
+        <table class="table table-light table-hover table-inverse">
           <div class="form-group row">
             <tr>
               <th><%= f.label :name, "名前" %></th>
