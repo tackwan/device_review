@@ -1,6 +1,7 @@
 <div class="container px-5">
   <div class="row">
     <div class="col-8 px-5 pt-4 mx-auto">
+      <%= flash[:notice] %>
       <h3>
         <%= @user.name %>さんの詳細
       </h3>
@@ -22,11 +23,17 @@
         </tr>
         <tr>
           <th>フォロー</th>
-          <td><%= link_to @user.followings.count, admin_user_followings_path(@user) %></td>
+          <td>
+            <i class="fas fa-user-check fa-lg px-2"></i>
+            <%= link_to @user.followings.count, admin_user_followings_path(@user) %>
+          </td>
         </tr>
         <tr>
           <th>フォロワー</th>
-          <td><%= link_to @user.followers.count, admin_user_followers_path(@user) %></td>
+          <td>
+            <i class="fas fa-users fa-lg px-2"></i>
+            <%= link_to @user.followers.count, admin_user_followers_path(@user) %>
+          </td>
         </tr>
         <tr>
           <th>会員ステータス</th>

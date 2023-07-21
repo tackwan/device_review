@@ -1,5 +1,5 @@
 <div class='container px-5'>
-  <h2>投稿編集</h2>
+  <h2 class="mt-3">投稿編集</h2>
   <!-- エラーメッセージ表示-->
   <% if @review.errors.any? %>
     <h3><%= @review.errors.count %>件のエラーが発生しました</h3><!--エラーメッセ-->
@@ -11,9 +11,9 @@
   <% end %>
   <!-- エラーメッセージ表示-->
   <div class='row'>
-    <div class='col mx-auto mt-5'>
+    <div class='col mx-auto'>
       <%= form_with(model: @review, url: review_path(@review), method: :patch) do |f| %>
-        <table class="table table-hover table-inverse table-borderless">
+        <table class="table table-light table-hover table-inverse h5">
           <tr>
             <th><%= f.label :image, "商品画像" %></th>
             <td><%= f.file_field :image, accept: "image/*" %></td>

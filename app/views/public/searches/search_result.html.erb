@@ -59,7 +59,7 @@
           <tbody>
             <% @reviews.each do |review| %>
               <tr>
-                <td><%= image_tag review.get_image(80, 80)%></td>
+                <td><%= image_tag review.image , size: "80x80" %></td>
                 <td>
                   <%= link_to review.user.name, user_path(review.user.id) %>
                 </td>
