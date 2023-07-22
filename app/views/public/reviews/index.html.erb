@@ -1,4 +1,4 @@
-<div class="container-fluid main">
+<div class="container-fluid">
   <div class="row">
     <div class="col-3 text-center mt-5 pl-5" >
         <h4>カテゴリー検索</h4>
@@ -43,6 +43,10 @@
         </tbody>
       </table>
     </div>
-    <%= paginate @reviews %>
+  </div>
+  <div class="row">
+    <div class="col-4 offset-4 mt-2 h5">
+      <%= paginate @reviews, window: 2 %>
+    </div>
   </div>
 </div>

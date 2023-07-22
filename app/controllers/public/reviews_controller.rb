@@ -19,11 +19,11 @@ class Public::ReviewsController < ApplicationController
   end
 
   def index
-    @reviews = Review.all.page(params[:page])
+    @reviews = Review.all.page(params[:page]).per(5)
     if params[:category_id].present?
       @category = Category.find_by(id: params[:category_id])
       if @category.present?
-        @reviews = @category.reviews.page(params[:page])
+        @reviews = @category.reviews.page(params[:page]).per(5)
       end
     end
   end
