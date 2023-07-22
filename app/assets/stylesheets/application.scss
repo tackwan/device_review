@@ -35,9 +35,13 @@ nav, h1, h2, h3, h4{
 // }
 
 // ヘッダーの背景
-nav{
+.navbar{
    background-image: image-url("pastel.jpg");
    background-size:  cover;
    background-position: center center;
    height: 80%;
+}
+
+main{
+   min-height: 76vh;
 }

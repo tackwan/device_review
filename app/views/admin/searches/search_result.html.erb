@@ -2,11 +2,11 @@
   <div class="row">
     <div class="col mx-auto">
       <h2>検索結果</h2>
-      <%= render "public/searches/search" %>
+      <%= render "admin/searches/search" %>
       <table class="table table-hover table-inverse">
         <% if @range == "ユーザー" %>
         <thead>
-          <tr>
+          <tr class="table-warning">
             <th></th>
             <th>ユーザー</th>
             <th>フォロー</th>
@@ -18,9 +18,15 @@
            <% @users.each do |user| %>
               <tr>
                 <td><%= image_tag user.get_profile_image(100,100) %></td>
-                <td><h4><%= link_to user.name, user_path(user.id) %></h4></td>
-                <td><h4><%= link_to user.followings.count, user_followings_path(user) %></h4></td>
-                <td><h4><%= link_to user.followers.count, user_followers_path(user) %></h4></td>
+                <td><h4><%= link_to user.name, admin_user_path(user.id) %></h4></td>
+                <td><h4>
+                  <i class="fas fa-user-check fa-lg px-2"></i>
+                  <%= link_to user.followings.count, user_followings_path(user) %>
+                </h4></td>
+                <td><h4>
+                  <i class="fas fa-users fa-lg px-2"></i>
+                  <%= link_to user.followers.count, user_followers_path(user) %>
+                </h4></td>
                 <td>
                 </td>
               </tr>
@@ -40,12 +46,12 @@
           <tbody>
             <% @reviews.each do |review| %>
               <tr>
-                <td><%= image_tag review.get_image(80, 80)%></td>
+                <td><%= image_tag review.image, size: "80x80" %></td>
                 <td>
-                  <%= link_to review.user.name, user_path(review.user.id) %>
+                  <%= link_to review.user.name, admin_user_path(review.user.id) %>
                 </td>
                 <td>
-                  <%= link_to review_path(review.id) do %>
+                  <%= link_to admin_review_path(review.id) do %>
                     <%= review.name %>
                   <% end %>
                 </td>
