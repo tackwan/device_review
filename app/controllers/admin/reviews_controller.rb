@@ -7,6 +7,8 @@ class Admin::ReviewsController < ApplicationController
 
   def show
     @review = Review.find(params[:id])
+    @comment = Comment.new
+    @user = @review.user
   end
 
   def edit
@@ -22,6 +24,12 @@ class Admin::ReviewsController < ApplicationController
         flash[:notice] = "必要情報を入力してください"
         render :edit
       end
+  end
+  
+  def destroy
+    @review = Review.find(params[:id])
+    @review.destroy
+    redirect_to "admin/reviews"
   end
 
   private

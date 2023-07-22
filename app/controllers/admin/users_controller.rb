@@ -16,7 +16,7 @@ class Admin::UsersController < ApplicationController
     user = User.find(params[:id])
     if user.update(user_params)
       flash[:notice] = "更新に成功しました"
-      redirect_to admin_user_path(customer.id)
+      redirect_to admin_user_path(user.id)
     else
       flash[:notice] = "更新に失敗しました"
       render :edit

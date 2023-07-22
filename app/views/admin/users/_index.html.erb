@@ -1,0 +1,22 @@
+<div class="col-9 mt-3 mx-auto">
+  <table class ="table table-light table-hover table-inverse mt-3">
+    <thead>
+      <tr class="table-warning">
+        <th></th>
+         <th>名前</th>
+        <th>フォロー</th>
+        <th>フォロワー</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% users.each do |user| %>
+        <tr>
+          <td><%= image_tag user.get_profile_image(100,100) %></td>
+          <td><h4><%= link_to user.name, admin_user_path(user.id) %></h4></td>
+          <td><%= link_to user.followings.count, admin_user_followings_path(user) %>
+          <td><%= link_to user.followers.count, admin_user_followers_path(user) %>
+        </tr>
+        <% end %>
+    </tbody>
+  </table>
+</div>

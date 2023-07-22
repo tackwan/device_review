@@ -1,16 +1,27 @@
-<%= render "layouts/header" %>
-<div class="container px-5">
-  <div class="row mx-auto mt-5">
-      <h2>商品一覧</h2>
-    <div class="col">
-      <table class="table table-hover table-inverse table-borderless">
+<div class="container-fluid">
+  <div class="row mx-auto mt-3">
+    <div class="col-3 offset-1 text-center mt-5 pl-5">
+        <h4>カテゴリー検索</h4>
+      <%= form_with url: reviews_path, method: :get do |f| %>
+        <%= f.collection_select :category_id, Category.all, :id, :name %>
+        <%= f.submit "検索", class: 'btn btn-sprimary'%>
+      <% end %>
+    </div>
+    <div class="col-8 mt-3">
+      <% if @category.present? %>
+        <h2>投稿一覧(<%= @category.name %>)</h2>
+      <% else %>
+        <h2>投稿一覧</h2>
+      <% end %>
+      <%= render "admin/searches/search" %>
+      <table class="table table-light table-hover table-inverse mt-3">
         <thead>
-          <tr>
+          <tr class="table-warning">
             <th>デバイス名</th>
             <th>メーカー</th>
             <th>カテゴリー</th>
-            <th>レビュー</th>
-            <th></th>
+            <th>評価</th>
+            <th>コメント</th>
           </tr>
         </thead>
         <tbody>
@@ -22,9 +33,12 @@
             <% end %>
             </td>
             <td><%= review.maker %></td>
-            <td><%= review.category %></td>
-            <td></td>
-            <td></td>
+            <td><%= review.category.name %></td>
+            <td><%= render"public/reviews/staticrate", review: review %></td>
+            <td>
+              <i class="far fa-comment-dots fa-lg p-2"></i>
+              <%= review.comments.count %>
+            </td>
           </tr>
         <% end %>
         </tbody>
