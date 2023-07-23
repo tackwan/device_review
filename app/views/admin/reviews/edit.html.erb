@@ -12,7 +12,7 @@
   <!-- エラーメッセージ表示-->
   <div class='row'>
     <div class='col mx-auto'>
-      <%= form_with(model: @review, url: review_path(@review), method: :patch) do |f| %>
+      <%= form_with(model: @review, url: admin_review_path(@review), method: :patch) do |f| %>
         <table class="table table-light table-hover table-inverse h5">
           <tr>
             <th><%= f.label :image, "商品画像" %></th>
@@ -51,9 +51,7 @@
         <div class="form-group">
           <%= f.submit "編集する", class: 'btn btn-success' %>
         </div>
-        <div>
-          <%= link_to "削除する", admin_review_path(@review), method: :delete, "data-confirm" => "削除しますか？", class:"btn btn-danger" %>
-        </div>
+
       <% end %>
     </div>
   </div>

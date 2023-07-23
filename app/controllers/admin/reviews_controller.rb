@@ -18,8 +18,8 @@ class Admin::ReviewsController < ApplicationController
   def update
     @review = Review.find(params[:id])
       if @review.update(review_params)
-        redirect_to admin_review_path(@item.id)
-        flash[:notice] = "商品を更新しました"
+        redirect_to admin_review_path(@review.id)
+        flash[:notice] = "更新に成功しました"
       else
         flash[:notice] = "必要情報を入力してください"
         render :edit
@@ -29,12 +29,12 @@ class Admin::ReviewsController < ApplicationController
   def destroy
     @review = Review.find(params[:id])
     @review.destroy
-    redirect_to "admin/reviews"
+    redirect_to "admin"
   end
 
   private
 
   def review_params
-    params.require(:item).permit(:name,:detail,:maker,:image, :category_id, :page)
+    params.require(:review).permit(:name, :detail, :maker, :category_id, :image, :star, :page)
   end
 end

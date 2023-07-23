@@ -53,7 +53,7 @@ class Public::ReviewsController < ApplicationController
   def destroy
     @review = Review.find(params[:id])
     @review.destroy
-    redirect_to "/reviews"
+    redirect_to admin_reviews_pat
   end
 
   private
