@@ -40,6 +40,7 @@
       </div>
       <% if @user == current_user %>
         <%= link_to "編集する", edit_user_path(@user.id), class:"btn btn-success" %>
+        <%= link_to "退会する", check_path, class:"btn btn-danger" %>
       <% end %>
     </div>
   </div>
