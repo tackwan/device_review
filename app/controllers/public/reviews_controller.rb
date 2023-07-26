@@ -1,14 +1,14 @@
 class Public::ReviewsController < ApplicationController
   before_action :authenticate_user!, except:[:index, :show]
   before_action :guest_check, only: [ :edit, :update, :destroy]
-  
+
   def new
     @form = Review.new
   end
 
   def create
     @form = Review.new(review_params)
-    @form.star = params[:score]
+    #@form.star = params[:score]
     @form.user_id = current_user.id
     if @form.save
       flash[:notice] = "投稿が成功しました"
@@ -41,8 +41,7 @@ class Public::ReviewsController < ApplicationController
 
   def update
     @review = Review.find(params[:id])
-    @star = params[:score]
-    if @review.update(review_params.merge(star: @star))
+    if @review.update(review_params)
       redirect_to review_path(@review.id)
       flash[:notice] = "投稿を更新しました"
     else
