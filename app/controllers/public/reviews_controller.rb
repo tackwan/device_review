@@ -1,6 +1,7 @@
 class Public::ReviewsController < ApplicationController
   before_action :authenticate_user!, except:[:index, :show]
-  before_action :guest_check, only: [ :edit, :destroy]
+  before_action :guest_check, only: [ :edit, :update, :destroy]
+  
   def new
     @form = Review.new
   end
@@ -53,7 +54,7 @@ class Public::ReviewsController < ApplicationController
   def destroy
     @review = Review.find(params[:id])
     @review.destroy
-    redirect_to admin_reviews_pat
+    redirect_to reviews_path
   end
 
   private
