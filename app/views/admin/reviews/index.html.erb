@@ -1,6 +1,6 @@
 <div class="container-fluid">
   <div class="row mx-auto mt-3">
-    <div class="col-3 offset-1 text-center mt-5 pl-5">
+    <div class="col-3 text-center mt-5 pl-5">
         <h4>カテゴリー検索</h4>
       <%= form_with url: reviews_path, method: :get do |f| %>
         <%= f.collection_select :category_id, Category.all, :id, :name %>
