@@ -15,7 +15,7 @@ Rails.application.routes.draw do
       get 'followers' => 'relationships#followers', as: "followers"
     end
     resources :reviews, only: [:index, :show, :edit, :update, :destroy]
-    resources :categories, only: [:index, :create, :edit, :update]
+    resources :categories, only: [:index, :create, :edit, :update, :destroy]
     get "/search" => "searches#search"
   end
   #ユーザー用
