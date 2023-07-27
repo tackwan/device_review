@@ -3,7 +3,7 @@
     <div class="col-3 text-center mt-5 pl-5 text-light">
       <div class="bg-info">
         <h4>カテゴリー検索</h4>
-        <%= form_with url: reviews_path, method: :get do |f| %>
+        <%= form_with url: admin_reviews_path, method: :get do |f| %>
           <%= f.collection_select :category_id, Category.all, :id, :name %>
           <%= f.submit "検索", class: 'btn btn-primary'%>
         <% end %>
