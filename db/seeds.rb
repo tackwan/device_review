@@ -26,9 +26,12 @@ Category.create!(
 
 Review.create!(
   [
-    {name: 'G-pro superlight', image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-review1.jpg"), filename:"sample-post1.jpg"), maker: 'logicool', detail: '扱いやすくて、最高です', star: '4', category_id: '1', user_id: users[0].id },
-    {name: 'apex pro TKL', image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-review2.jpg"), filename:"sample-post2.jpg"), maker: 'SteelSeries', detail: 'タイピングの感覚がとても気持ち良い', star: '5', category_id: '2', user_id: users[1].id },
-    {name: 'Kraken', image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-review3.jpg"), filename:"sample-post3.jpg"), maker: 'Razer', detail: '音がよく聞こえて、マイクの音質もよいです', star: '3', category_id: '3', user_id: users[2].id }
+    {name: 'G-pro superlight', image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-review1.jpg"), filename:"sample-review1.jpg"), maker: 'logicool', detail: '扱いやすくて、最高です', star: '4', category_id: '1', user_id: users[0].id },
+    {name: 'apex pro TKL', image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-review2.jpg"), filename:"sample-review2.jpg"), maker: 'SteelSeries', detail: 'タイピングの感覚がとても気持ち良い', star: '5', category_id: '2', user_id: users[1].id },
+    {name: 'Kraken', image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-review3.jpg"), filename:"sample-review3.jpg"), maker: 'Razer', detail: '音がよく聞こえて、マイクの音質もよいです', star: '3', category_id: '3', user_id: users[2].id },
+    {name: 'starlight-12', image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-review4.jpg"), filename:"sample-review4.jpg"), maker: 'finalmouse', detail: 'とても軽くて、充電持ちも最高', star: '4', category_id: '1', user_id: users[1].id },
+    {name: 'XL2566K ゲーミングモニター', image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-review5.jpg"), filename:"sample-review5.jpg"), maker: 'BenQ', detail: '360Hzの最高峰のモニターです', star: '5', category_id: '4', user_id: users[0].id },
+    {name: 'viper mini signature edition', image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-review6.jpg"), filename:"sample-review6.jpg"), maker: 'Razer', detail: 'とてもかっこよくて良い。値段がネック', star: '4', category_id: '1', user_id: users[0].id }
   ]
 )
 
