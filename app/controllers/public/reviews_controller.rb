@@ -1,6 +1,7 @@
 class Public::ReviewsController < ApplicationController
   before_action :authenticate_user!, except:[:index, :show]
   before_action :guest_check, only: [ :edit, :update, :destroy]
+  before_action :ensure_user, only: [:edit, :update, :destroy]
 
   def new
     @form = Review.new
@@ -57,6 +58,13 @@ class Public::ReviewsController < ApplicationController
   end
 
   private
+  
+  #他ユーザーによる編集・削除を防ぐ
+  def ensure_user
+    @reviews = current_user.reviews
+    @review = @reviews.find_by(id: params[:id])
+    redirect_to new_review_path unless @review
+  end
 
   def review_params
     params.require(:review).permit(:name, :detail, :maker, :category_id, :image, :star, :page)
