@@ -15,6 +15,12 @@
       <% else %>
         <h2>投稿一覧</h2>
       <% end %>
+      <h3 class="text-right">
+        <%= link_to new_review_path do %>
+          <i class="far fa-plus-square fa-lg"></i>
+          投稿する
+        <% end %>
+      </h3>
       <%= render "public/searches/search" %>
       <table class="table table-light table-hover table-inverse mt-3">
         <thead>
